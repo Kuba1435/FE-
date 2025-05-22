@@ -1,0 +1,369 @@
+.homeBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.drop-zone {
+    display: flex;
+    flex-direction: column;
+    border: 2px dashed #1976d2;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    margin: 30px auto;
+    width: 80%;
+    background: #f8f8f8;
+    user-select: none;
+}
+
+.drop-zone:hover {
+    background: #e7e6e6;
+    border-color: #11508f;
+}
+
+.drop-zone h2 {
+    margin: 2vh 0;
+}
+
+.drop-zone p {
+    margin: 0 0 2vh 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: #9e9c9c;
+}
+
+.drop-zone label {
+    cursor: pointer;
+    padding: 1% 2%;
+    background: #1976d2;
+    color: white;
+    border-radius: 4px;
+    width: 10%;
+    min-width: 100px;
+    align-self: center;
+}
+
+/* Modal styles */
+.modal, .file-view-modal, .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content, .file-preview, .popup-message {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content {
+    width: 95%;
+    max-width: 1200px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    background: white;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.close-button:hover {
+    color: #d32f2f;
+}
+
+/* CSV Editor styles */
+.csv-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.csv-table-wrapper {
+    flex: 1;
+    overflow: auto;
+    padding: 16px;
+    margin-bottom: 60px; /* Prostor pro buttony */
+}
+
+.csv-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.csv-table th,
+.csv-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    min-width: 150px;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+
+.csv-table thead {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+}
+
+.csv-table th {
+    background: #f5f5f5;
+    font-weight: bold;
+    text-align: left;
+}
+
+.csv-input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+}
+
+.csv-input:focus {
+    outline: 2px solid #1976d2;
+    background: #f0f7ff;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 0 16px;
+    flex: 1;
+}
+
+.pagination-controls span {
+    color: #666;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.pagination-controls .action-button {
+    min-width: 100px;
+    padding: 8px 16px;
+}
+
+.action-button {
+    padding: 8px 16px;
+    border: 1px solid #1976d2;
+    border-radius: 4px;
+    background: white;
+    color: #1976d2;
+    cursor: pointer;
+    min-width: 100px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.action-button:hover:not(:disabled) {
+    background: #1976d2;
+    color: white;
+}
+
+.action-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #ccc;
+    color: #999;
+}
+
+.remove-row {
+    background: none;
+    border: none;
+    color: #d32f2f;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.2s ease;
+}
+
+.remove-row:hover {
+    background: #ffebee;
+}
+
+/* PDF viewer styles */
+.file-preview {
+    padding: 20px;
+    text-align: center;
+    min-width: 300px;
+    max-width: 900px;
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.file-preview h2 {
+    color: #b71c1c;
+    font-size: 2.2rem;
+    margin: 0 0 20px 0;
+}
+
+.pdf-modal-viewer {
+    flex: 1;
+    width: 100%;
+    height: calc(100% - 120px);
+    overflow: auto;
+    margin: 10px 0;
+}
+
+.file-preview button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    background: #1976d2;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 2;
+}
+
+.file-preview button:hover {
+    background: #0d47a1;
+}
+
+/* Popup message styles */
+.popup-message {
+    padding: 32px 24px;
+    text-align: center;
+    min-width: 300px;
+}
+
+.popup-message h2 {
+    margin-top: 0;
+    color: #b71c1c;
+}
+
+.popup-message button {
+    margin-top: 16px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    background: #1976d2;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.popup-message button:hover {
+    background: #0d47a1;
+}
+
+/* CSV Actions styles */
+.csv-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+    background: white;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 700px) {
+    .pdf-modal-viewer .textLayer span {
+        font-size: 2vw !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .pdf-modal-viewer .textLayer span {
+        font-size: 3vw !important;
+    }
+    
+    .file-preview {
+        width: 100vw;
+        height: 100vh;
+        padding: 10px;
+        border-radius: 0;
+    }
+    
+    .file-preview h2 {
+        font-size: 1.5rem;
+        margin: 5px 0;
+    }
+    
+    .file-preview button {
+        bottom: 15px;
+        width: calc(100% - 40px);
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 300px) {
+    .scale {
+        scale: 0.4;
+    }
+}
+
+@media (max-width: 570px) {
+    .pagination-controls .action-button {
+        min-width: 40px;
+        padding: 8px;
+        font-size: 0;
+    }
+    
+    .pagination-controls .action-button:first-child::before {
+        content: "<";
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .pagination-controls .action-button:last-child::before {
+        content: ">";
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .pagination-controls span {
+        font-size: 0.8rem;
+    }
+}

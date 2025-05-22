@@ -1,0 +1,80 @@
+<section class="homeBody">
+
+    <div class="container">
+        <h1 class="text-center">File reader</h1>
+    </div>
+    
+    <div class="drop-zone" (drop)="onFileDropped($event)" (dragover)="allowDrop($event)" data-testid="file-upload-area">
+        <h2>Drop a file</h2>
+        <p>or</p>
+        <label for="fileInput" class="file-label">choose a file</label>
+        <input id="fileInput" type="file" accept=".csv, .pdf" (change)="onFileSelected($event)" style="display:none" data-testid="file-upload-input" />
+</div>
+
+
+<!-- CSV Modal -->
+<div *ngIf="showCsvModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>CSV Editor</h2>      <div class="pagination-controls">
+        <button class="action-button" 
+                [disabled]="currentPage === 0" 
+                (click)="previousPage()">Previous</button>
+        <span>Showing {{ getDisplayedRowRange() }} of {{ getTotalRows() }} rows</span>
+        <button class="action-button" 
+                [disabled]="(currentPage + 1) * pageSize >= csvData.length" 
+                (click)="nextPage()">Next</button>
+      </div>
+      <button class="close-button" (click)="closeCsvModal()">×</button>
+    </div>
+    
+    <div class="csv-container">
+      <div class="csv-table-wrapper">
+        <table class="csv-table">
+          <thead>
+            <tr>
+              <th *ngFor="let header of csvHeaders">{{ header }}</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of displayedRows; let i = index">
+              <td *ngFor="let header of csvHeaders">
+                <input class="csv-input" 
+                       [(ngModel)]="row[header]" 
+                       (change)="onCellEdit()">
+              </td>
+              <td>
+                <button class="remove-row" (click)="removeRow(currentPage * pageSize + i)">×</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="csv-actions">
+        <button class="action-button" (click)="addRow()">Add Row</button>
+        <button class="action-button" (click)="saveChanges()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PDF Modal -->
+<div *ngIf="fileType === 'pdf'" class="file-view-modal">
+  <div class="file-preview">
+    <h2>PDF Preview</h2>
+    <pdf-viewer [src]="pdfSrc!" [render-text]="true" [zoom]="scale" class="pdf-modal-viewer"></pdf-viewer>
+    <button (click)="closeModal()">Close</button>
+  </div>
+</div>
+
+<div *ngIf="fileType === 'unsupported'" class="popup-overlay">
+  <div class="popup-message">
+    <h2>Unsupported file type</h2>
+    <p>The file "{{unsupportedFileName}}" is not supported.</p>
+    <p>Only CSV and PDF is supported</p>
+    <button (click)="closeModal()">Close</button>
+  </div>
+</div>
+</section>

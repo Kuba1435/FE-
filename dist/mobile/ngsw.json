@@ -1,0 +1,80 @@
+{
+  "configVersion": 1,
+  "timestamp": 1747904263076,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/index.html",
+        "/main.bfcfb2c76bee92b0.js",
+        "/manifest.webmanifest",
+        "/polyfills.004f89c77b4ecba1.js",
+        "/runtime.fdec77f0d51aff9a.js",
+        "/styles.ef46db3751d8e999.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/circularoLogo.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "file-cache",
+      "patterns": [
+        "\\/(?:.+\\/)?[^/]*\\.pdf",
+        "\\/(?:.+\\/)?[^/]*\\.csv"
+      ],
+      "strategy": "performance",
+      "maxSize": 50,
+      "maxAge": 86400000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/assets/circularoLogo.jpg": "a028fd559dd639bea3fdc10e6c20654f7f059874",
+    "/index.html": "95b46c5d99adaf8dfc2c61ab9c8c2f97c007b17c",
+    "/main.bfcfb2c76bee92b0.js": "4c7fa5715346a48600ea5f2b163d06f85366cc40",
+    "/manifest.webmanifest": "25a114cfd5c9fdd64100e1d64a07f04cb2cb5b65",
+    "/polyfills.004f89c77b4ecba1.js": "da2a2b32d60d6db13909d85e4a894c33293e9d44",
+    "/runtime.fdec77f0d51aff9a.js": "23a101df20857ec069c07b913ffdbd77b1607028",
+    "/styles.ef46db3751d8e999.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
