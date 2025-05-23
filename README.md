@@ -1,19 +1,19 @@
 # File Reader Application
 
-A modern file reader application built with Angular that supports PDF and CSV file formats with editing capabilities.
+A file reader application built with Angular that supports PDF and CSV file formats with editing capabilities.
 
 ## Features
 
-- 📁 Drag and drop file upload
-- 📊 CSV file viewing and editing
+- Drag and drop file upload
+- CSV file viewing and editing
   - Add/remove rows
   - Edit cell values
   - Pagination support
-- 📄 PDF file preview
-- 📱 Responsive design
-- 🐳 Docker support
-- 🧪 Cypress testing
-- 📦 Mobile-optimized bundling
+- PDF file preview
+- Responsive design
+- Docker support
+- Cypress testing
+- Mobile-optimized bundling
 
 ## Getting Started
 
@@ -85,25 +85,6 @@ src/
 2. Create a feature branch
 3. Submit a pull request
 
-## License
-
-This project is licensed under the MIT License.
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
 
 ## Building
 

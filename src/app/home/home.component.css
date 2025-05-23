@@ -47,6 +47,7 @@
 
 /* Modal styles */
 .modal, .file-view-modal, .popup-overlay {
+    z-index: 9999;
     position: fixed;
     top: 0;
     left: 0;
@@ -56,7 +57,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    outline: 4px solid red !important; /* DEBUG: zvýraznění modalu, můžeš později odstranit */
 }
 
 .modal-content, .file-preview, .popup-message {
@@ -71,7 +72,8 @@
     height: 90vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
+    max-height: 90vh;
 }
 
 .modal-header {

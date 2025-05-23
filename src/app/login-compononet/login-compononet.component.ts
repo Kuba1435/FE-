@@ -12,7 +12,7 @@ export class LoginCompononetComponent {
 
   onLogin(event: Event) {
     event.preventDefault();
-    // Zde můžete přidat ověření přihlašovacích údajů
+    localStorage.setItem('isLoggedIn', 'true');
     this.router.navigate(['/home']);
   }
 }

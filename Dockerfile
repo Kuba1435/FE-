@@ -1,44 +1,24 @@
-# Use Node.js LTS version as base image
-FROM node:20-alpine as builder
+# Build stage
+FROM node:latest AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
 
-# Install dependencies
 RUN npm install
 
-# Copy project files
+RUN npm install -g @angular/cli
+
 COPY . .
 
-# Build the application
-RUN npm run build
+RUN npm run build --config=production
+
 
 # Production stage
-FROM nginx:alpine
+FROM nginx:latest
 
-# Copy built files to nginx
-COPY --from=builder /app/dist/test-app /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist/test-app /usr/share/nginx/html
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port
 EXPOSE 80
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
-
-# Copy built assets to nginx
-COPY --from=builder /app/dist/test-app/browser /usr/share/nginx/html
-
-# Copy nginx configuration if needed
-# COPY nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]

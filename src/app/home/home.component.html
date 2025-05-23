@@ -13,23 +13,24 @@
 
 
 <!-- CSV Modal -->
-<div *ngIf="showCsvModal" class="modal">
+<div *ngIf="showCsvModal" class="modal" data-testid="csv-modal">
   <div class="modal-content">
     <div class="modal-header">
-      <h2>CSV Editor</h2>      <div class="pagination-controls">
-        <button class="action-button" 
-                [disabled]="currentPage === 0" 
-                (click)="previousPage()">Previous</button>
-        <span>Showing {{ getDisplayedRowRange() }} of {{ getTotalRows() }} rows</span>
+      <h2>CSV Editor</h2>
+      <div class="pagination-controls">
+        <button class="action-button"
+                [disabled]="currentPage === 0"
+                (click)="previousPage()" data-testid="previous-page-button">Previous</button>
+        <span data-testid="page-indicator">Page {{ currentPage + 1 }}</span>
         <button class="action-button" 
                 [disabled]="(currentPage + 1) * pageSize >= csvData.length" 
-                (click)="nextPage()">Next</button>
+                (click)="nextPage()" data-testid="next-page-button">Next</button>
       </div>
       <button class="close-button" (click)="closeCsvModal()">×</button>
     </div>
     
     <div class="csv-container">
-      <div class="csv-table-wrapper">
+      <div class="csv-table-wrapper" data-testid="csv-table">
         <table class="csv-table">
           <thead>
             <tr>
@@ -39,7 +40,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let row of displayedRows; let i = index">
-              <td *ngFor="let header of csvHeaders">
+              <td *ngFor="let header of csvHeaders" data-testid="csv-table-cell">
                 <input class="csv-input" 
                        [(ngModel)]="row[header]" 
                        (change)="onCellEdit()">
@@ -64,7 +65,7 @@
 <div *ngIf="fileType === 'pdf'" class="file-view-modal">
   <div class="file-preview">
     <h2>PDF Preview</h2>
-    <pdf-viewer [src]="pdfSrc!" [render-text]="true" [zoom]="scale" class="pdf-modal-viewer"></pdf-viewer>
+    <pdf-viewer [src]="pdfSrc!" [render-text]="true" [zoom]="scale" class="pdf-modal-viewer" data-testid="pdf-viewer"></pdf-viewer>
     <button (click)="closeModal()">Close</button>
   </div>
 </div>
