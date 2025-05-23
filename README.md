@@ -22,12 +22,12 @@ The application only supports PDF and CSV file types.
   - If an unsupported file type is uploaded, an error message is shown
 
 - **PDF Handling**
-  - If a PDF is uploaded, it is read using the `FileReader` API as a `dataURL`
+  - If a PDF is uploaded, it is read using the `FileReader` method, which converts the file data into a `dataURL`
 
 - **CSV Handling**
-  - CSV files are read as plain text using the `FileReader` API
+  - If a CSV file is uploaded, it is read as plain text using the `FileReader` method
   - The first row is used as the table header
-  - Remaining rows are parsed into objects and rendered into a table using `<td><input></td>` elements for inline editing
+  - The remaining rows are parsed into objects and rendered into a table using `<td><input></td>` elements to allow inline editing
 
 - **Pagination for Large Files**
   - If the CSV has many rows, pagination is used in the modal window
