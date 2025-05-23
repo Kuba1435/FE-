@@ -22,7 +22,7 @@ The application only supports PDF and CSV file types.
   - If an unsupported file type is uploaded, an error message is shown
 
 - **PDF Handling**
-  - If a PDF is uploaded, it is read using the `FileReader` method, which converts the file data into a `dataURL`
+  - If a PDF is uploaded, it is read using the `FileReader` method, which converts the file data into a `dataURL`, and then rendered in the modal window using the `ng2-pdf-viewer` library
 
 - **CSV Handling**
   - If a CSV file is uploaded, it is read as plain text using the `FileReader` method
