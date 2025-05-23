@@ -1,19 +1,46 @@
-# File Reader Application
+## File Reader Application (Angular)
 
-A file reader application built with Angular that supports PDF and CSV file formats with editing capabilities.
+A file reader application built with Angular that supports PDF and CSV file formats with editing capabilities.  
+The user is first prompted to log in – without logging in, they will not be able to access the application.  
+When uploading files for viewing, they can choose between drag and drop or selecting a file from the file manager.  
+The application only supports PDF and CSV file types.
 
-## Features
+---
 
-- Drag and drop file upload
-- CSV file viewing and editing
-  - Add/remove rows
-  - Edit cell values
-  - Pagination support
-- PDF file preview
-- Responsive design
-- Docker support
-- Cypress testing
-- Mobile-optimized bundling
+### Features
+
+- **Angular Project Setup**
+  - Creation of the Angular project and installation of necessary dependencies
+
+- **Login System**
+  - A simple login window secured with `AuthGuard` to prevent unauthorized access
+  - Login state is stored in `LocalStorage`
+
+- **File Upload and Display**
+  - A modal window appears when a file is uploaded to ensure a modern and clear display
+  - Only `.pdf` and `.csv` files are allowed
+  - If an unsupported file type is uploaded, an error message is shown
+
+- **PDF Handling**
+  - If a PDF is uploaded, it is read using the `FileReader` API as a `dataURL`
+
+- **CSV Handling**
+  - CSV files are read as plain text using the `FileReader` API
+  - The first row is used as the table header
+  - Remaining rows are parsed into objects and rendered into a table using `<td><input></td>` elements for inline editing
+
+- **Pagination for Large Files**
+  - If the CSV has many rows, pagination is used in the modal window
+  - Only 100 rows are rendered per page to optimize performance
+  - Navigation loads the next set of 100 rows (e.g., 101–201, etc.)
+
+- **Row Management**
+  - Users can add an empty row at the end of the table via a button
+
+- **Saving Files**
+  - Users can save the modified file back to their computer
+
+
 
 ## Getting Started
 
@@ -32,14 +59,9 @@ npm install
 
 2. Start development server:
 ```bash
-npm start
+ng serve
 ```
 
-3. Run tests:
-```bash
-npm run test         # Unit tests
-npm run e2e         # E2E tests
-```
 
 ### Docker Deployment
 
@@ -50,7 +72,7 @@ docker build -t file-reader .
 
 2. Run the container:
 ```bash
-docker run -p 80:80 file-reader
+docker run -p 8080:80 file-reader
 ```
 
 ## Mobile Support
@@ -64,7 +86,7 @@ The application is optimized for mobile devices with:
 
 End-to-end tests are implemented using Cypress. Run them with:
 ```bash
-npm run cypress:open
+npx cypress run
 ```
 
 ## Project Structure
@@ -73,47 +95,10 @@ npm run cypress:open
 src/
 ├── app/
 │   ├── home/           # Main file reader component
-│   ├── shared/        # Shared components and services
-│   └── models/        # TypeScript interfaces
-├── assets/           # Static assets
-└── styles/          # Global styles
+│   ├── login/          # Login component 
+│   ├── shared          # Shared components and services
+├── assets/             # Static assets
 ```
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
 
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
